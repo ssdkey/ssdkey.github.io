@@ -1,72 +1,309 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>.. ..- ..- ...-</title>
-<meta content="iuuv" name="keywords" />
-<meta name="description" content="iuuv" />
-<link href="css/Chestnut.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iuuv - 但行好事 莫问前程</title>
+    <meta name="keywords" content="iuuv, 个人主页, 博客, ssdkey">
+    <meta name="description" content="iuuv 的个人主页 - 但行好事，莫问前程">
+    <meta name="author" content="iuuv">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="box_relative">
- <h1 align="center" style="font-size: 70px;"">来到地球的</h1>
-<div>
-  <ul class="countdown">
-  <li> <span class="days">00</span>
-    <p class="days_ref">days</p>
-  </li>
-</ul>
-<ul class="countdown">
-  <li> <span class="hours">00</span>
-    <p class="hours_ref">hours</p>
-  </li>
-  <li class="seperator">:</li>
-  <li> <span class="minutes">00</span>
-    <p class="minutes_ref">minutes</p>
-  </li>
-  <li class="seperator">:</li>
-  <li> <span class="seconds">00</span>
-    <p class="seconds_ref">seconds</p>
-  </li>
-</ul>
-</div>
-   <p>“但行好事” “莫问前程”</p>
-<ul class="countdown">
-  <li>
-    <p>Visit Blog &nbsp; <a href="https://www.yuque.com/diaodiaodewo"  target="_blank">iuuv</a>&nbsp;
-      <a href="http://zhihu.com/people/sdkey" target="_blank">zhihu</a>&nbsp;
-      <a href="https://weibo.com/u/7294984151?topnav=1&wvr=6&topsug=1"  target="_blank">weibo</a>
-    </p>
-  </li>
-</ul>
-  <ul class="countdown">
-    <li>
-      <p>
-        <a href="http://sighttp.qq.com/authd?IDKEY=c8346456c065a21efe7c7be4b3fbc8c11a2ef43da81dcfce" target="_blank"><img border="0"  src="img/q.png" alt="联系我" title="联系我"/></a>
-        &nbsp;<a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=A3BwZ2hmekNyci1gbG4" target="_blank"><img border="0"  src="img/m.png" alt="给我写信" title="给我写信"/></a>
-      </p>
-    </li>
-  </ul>
-</div>
-<div class="mt-2 mt-lg-0 d-flex flex-items-center">
-        <a aria-label="Homepage" title="GitHub" class="footer-octicon mr-2" href="https://github.com/ssdkey">
-          <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
-    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-</svg>
-</a> 
-      </div>
-            <script type="text/javascript" src="js/jquery.min.js"></script>
-            <script type="text/javascript" src="js/jquery.downCount.js"></script> 
-            <script type="text/javascript" src="js/Chestnut.js"></script> 
-            <script class="" type="text/javascript">
-                $('.countdown').downCount({
-                    date: '09/25/1994 02:00:00',
-                    offset: +10
-                }, function () {
-                    alert('!');
-                });
-            </script>
-</body>
+    <!-- 星空粒子画布 -->
+    <canvas id="starfield"></canvas>
 
+    <!-- 鼠标跟随光效 -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="container">
+        <div class="content">
+            <!-- 小熊猫头像 -->
+            <div class="avatar-wrapper animate-in">
+                <div class="avatar-ring">
+                    <div class="avatar">
+                        <img src="favicon.ico" alt="小熊猫" width="64" height="64">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 标题 -->
+            <h1 class="title animate-in delay-1">来到地球的</h1>
+
+            <!-- 倒计时 -->
+            <div class="countdown-wrapper animate-in delay-2">
+                <div class="countdown-item">
+                    <div class="countdown-card">
+                        <span class="countdown-number" id="days">000</span>
+                    </div>
+                    <span class="countdown-label">DAYS</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-card">
+                        <span class="countdown-number" id="hours">00</span>
+                    </div>
+                    <span class="countdown-label">HOURS</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-card">
+                        <span class="countdown-number" id="minutes">00</span>
+                    </div>
+                    <span class="countdown-label">MINUTES</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-card">
+                        <span class="countdown-number seconds" id="seconds">00</span>
+                    </div>
+                    <span class="countdown-label">SECONDS</span>
+                </div>
+            </div>
+
+            <!-- 座右铭 -->
+            <p class="motto animate-in delay-3">"但行好事" "莫问前程"</p>
+
+            <!-- 社交链接 -->
+            <nav class="links animate-in delay-4">
+                <a href="https://www.yuque.com/diaodiaodewo" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <span class="link-icon">📖</span>
+                    <span class="link-text">语雀</span>
+                    <span class="link-arrow">→</span>
+                </a>
+                <a href="https://zhihu.com/people/sdkey" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <span class="link-icon">💡</span>
+                    <span class="link-text">知乎</span>
+                    <span class="link-arrow">→</span>
+                </a>
+                <a href="https://weibo.com/u/7294984151" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <span class="link-icon">📢</span>
+                    <span class="link-text">微博</span>
+                    <span class="link-arrow">→</span>
+                </a>
+                <a href="https://github.com/ssdkey" target="_blank" rel="noopener noreferrer" class="link-card">
+                    <span class="link-icon">💻</span>
+                    <span class="link-text">GitHub</span>
+                    <span class="link-arrow">→</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer animate-in delay-7">
+            <a href="https://github.com/ssdkey" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg height="20" viewBox="0 0 16 16" width="20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+        </footer>
+    </div>
+
+    <script>
+    (function () {
+        /* ===== 入场动画（用JS触发，兼容Electron） ===== */
+        const delays = {
+            'delay-1': 100,
+            'delay-2': 200,
+            'delay-3': 350,
+            'delay-4': 500,
+            'delay-5': 650,
+            'delay-6': 800,
+            'delay-7': 950
+        };
+
+        document.querySelectorAll('.animate-in').forEach(el => {
+            let delay = 0;
+            for (const cls of el.classList) {
+                if (delays[cls]) { delay = delays[cls]; break; }
+            }
+            setTimeout(() => el.classList.add('visible'), delay);
+        });
+
+        const footer = document.querySelector('.footer');
+        if (footer) {
+            setTimeout(() => footer.classList.add('visible'), 1100);
+        }
+
+        /* ===== 星空粒子背景 ===== */
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        let shootingStars = [];
+        let mouseX = 0, mouseY = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function createStars(count) {
+            stars = [];
+            for (let i = 0; i < count; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5 + 0.3,
+                    alpha: Math.random() * 0.8 + 0.2,
+                    twinkleSpeed: Math.random() * 0.02 + 0.005,
+                    twinkleOffset: Math.random() * Math.PI * 2,
+                    // 视差层 (0=远, 1=近)
+                    depth: Math.random()
+                });
+            }
+        }
+
+        function createShootingStar() {
+            if (Math.random() > 0.003) return; // 低概率生成
+            shootingStars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height * 0.3,
+                length: Math.random() * 80 + 40,
+                speed: Math.random() * 8 + 4,
+                angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
+                alpha: 1,
+                decay: Math.random() * 0.015 + 0.01
+            });
+        }
+
+        function drawStars(time) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 绘制星云/雾气
+            const gradient1 = ctx.createRadialGradient(
+                canvas.width * 0.2, canvas.height * 0.3, 0,
+                canvas.width * 0.2, canvas.height * 0.3, canvas.width * 0.4
+            );
+            gradient1.addColorStop(0, 'rgba(120, 50, 255, 0.04)');
+            gradient1.addColorStop(1, 'transparent');
+            ctx.fillStyle = gradient1;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const gradient2 = ctx.createRadialGradient(
+                canvas.width * 0.8, canvas.height * 0.6, 0,
+                canvas.width * 0.8, canvas.height * 0.6, canvas.width * 0.35
+            );
+            gradient2.addColorStop(0, 'rgba(255, 50, 120, 0.03)');
+            gradient2.addColorStop(1, 'transparent');
+            ctx.fillStyle = gradient2;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 绘制星星
+            const parallaxX = (mouseX - canvas.width / 2) * 0.01;
+            const parallaxY = (mouseY - canvas.height / 2) * 0.01;
+
+            stars.forEach(star => {
+                const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
+                const alpha = star.alpha * (0.6 + twinkle * 0.4);
+                const px = star.x + parallaxX * star.depth;
+                const py = star.y + parallaxY * star.depth;
+
+                ctx.beginPath();
+                ctx.arc(px, py, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(200, 200, 255, ${alpha})`;
+                ctx.fill();
+
+                // 大星星加光晕
+                if (star.radius > 1.2) {
+                    ctx.beginPath();
+                    ctx.arc(px, py, star.radius * 3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(180, 180, 255, ${alpha * 0.1})`;
+                    ctx.fill();
+                }
+            });
+
+            // 流星
+            createShootingStar();
+            shootingStars = shootingStars.filter(s => s.alpha > 0);
+            shootingStars.forEach(s => {
+                const endX = s.x + Math.cos(s.angle) * s.length;
+                const endY = s.y + Math.sin(s.angle) * s.length;
+
+                const grad = ctx.createLinearGradient(s.x, s.y, endX, endY);
+                grad.addColorStop(0, `rgba(255, 255, 255, 0)`);
+                grad.addColorStop(1, `rgba(255, 255, 255, ${s.alpha})`);
+
+                ctx.beginPath();
+                ctx.moveTo(s.x, s.y);
+                ctx.lineTo(endX, endY);
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                s.x += Math.cos(s.angle) * s.speed;
+                s.y += Math.sin(s.angle) * s.speed;
+                s.alpha -= s.decay;
+            });
+        }
+
+        let animFrame;
+        function animateStars(time) {
+            drawStars(time);
+            animFrame = requestAnimationFrame(animateStars);
+        }
+
+        resizeCanvas();
+        createStars(200);
+        animateStars(0);
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            createStars(200);
+        });
+
+        /* ===== 鼠标跟随光效 ===== */
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+            cursorGlow.style.opacity = '1';
+        });
+        document.addEventListener('mouseleave', () => {
+            cursorGlow.style.opacity = '0';
+        });
+
+        /* ===== 倒计时 ===== */
+        const targetDate = new Date(Date.UTC(1994, 8, 25, 2, 0, 0) - 10 * 3600000);
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = now - targetDate;
+            if (diff < 0) return;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            animateNumber(daysEl, String(days).padStart(3, '0'));
+            animateNumber(hoursEl, String(hours).padStart(2, '0'));
+            animateNumber(minutesEl, String(minutes).padStart(2, '0'));
+            animateNumber(secondsEl, String(seconds).padStart(2, '0'));
+        }
+
+        function animateNumber(el, newVal) {
+            if (el.textContent !== newVal) {
+                el.style.transform = 'translateY(-5px)';
+                el.style.opacity = '0.5';
+                setTimeout(() => {
+                    el.textContent = newVal;
+                    el.style.transform = 'translateY(0)';
+                    el.style.opacity = '1';
+                }, 150);
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+    })();
+    </script>
+</body>
 </html>
