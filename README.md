@@ -1,1 +1,16 @@
 # ssdkey.github.io
+
+我的个人主页（域名：me.iuuv.cn），一个星空主题的单页网站。
+
+首页记录「来到地球的」天数倒计时，带动态漩涡入口；点击漩涡进入「六一」页，展示我的 GitHub 项目（my repositories）与社区主页（about me）。
+
+## 首页截图
+
+![首页截图](img/homepage.jpg)
+
+## 技术栈
+
+- 纯 HTML / CSS / JavaScript（无框架）
+- Canvas 星空粒子背景（`js/starfield.js`）
+- Canvas 漩涡动效（`js/vortex.js`）
+- GitHub Pages 托管
