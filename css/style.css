@@ -388,3 +388,640 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
+/* ===== 首页目录导航 ===== */
+.toc {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.toc-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.toc-item:hover {
+    color: #fff;
+    border-color: rgba(196, 77, 255, 0.45);
+    background: rgba(196, 77, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(196, 77, 255, 0.2);
+}
+
+.toc-item:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toc-icon {
+    font-size: 1.1rem;
+}
+
+.toc-text {
+    letter-spacing: 0.05em;
+}
+
+/* ===== 二级页面顶部导航 ===== */
+.page-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(5, 5, 16, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: #c8a2ff;
+    text-decoration: none;
+    text-shadow: 0 0 20px rgba(196, 77, 255, 0.4);
+}
+
+.nav-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    box-shadow: 0 0 12px rgba(196, 77, 255, 0.45);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.2rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-links a.active {
+    color: #c8a2ff;
+    border-bottom-color: #c44dff;
+}
+
+/* ===== 二级页面布局 ===== */
+.page-container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    padding: 6rem 1.5rem 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.page-content {
+    max-width: 760px;
+    width: 100%;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    color: #c8a2ff;
+    text-shadow: 0 0 30px rgba(196, 77, 255, 0.3);
+    margin-bottom: 0.8rem;
+}
+
+.page-subtitle {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* ===== 二级页面卡片 ===== */
+.page-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: 1.6rem 2rem;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-card:hover {
+    border-color: rgba(196, 77, 255, 0.3);
+    box-shadow: 0 0 25px rgba(196, 77, 255, 0.08);
+}
+
+.page-card h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #c8a2ff;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.page-card p {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.6rem;
+}
+
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+.info-list li a {
+    color: #c8a2ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.info-list li a:hover {
+    color: #fff;
+}
+
+.info-label {
+    min-width: 80px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+}
+
+.interest-list {
+    list-style: none;
+}
+
+.interest-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+/* ===== 作品集网格 ===== */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.work-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: 1.6rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-card:hover {
+    border-color: rgba(196, 77, 255, 0.35);
+    box-shadow: 0 8px 30px rgba(196, 77, 255, 0.12);
+    transform: translateY(-4px);
+}
+
+.work-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.work-card h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: #c8a2ff;
+    margin-bottom: 0.6rem;
+}
+
+/* 导航页入口卡片（a 标签形式） */
+a.nav-entry {
+    text-decoration: none;
+}
+
+a.nav-entry .work-desc {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.work-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.work-link {
+    color: #6e8efb;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.work-link:hover {
+    color: #fff;
+}
+
+/* ===== 联系我列表 ===== */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 1rem 1.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.contact-card:hover {
+    color: #fff;
+    border-color: rgba(196, 77, 255, 0.4);
+    background: rgba(196, 77, 255, 0.08);
+    transform: translateX(4px);
+    box-shadow: 0 8px 25px rgba(196, 77, 255, 0.12);
+}
+
+.contact-card:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.contact-icon {
+    font-size: 1.3rem;
+    width: 2.2rem;
+    text-align: center;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+}
+
+.contact-name {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.contact-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== 页面底部操作 ===== */
+.page-actions {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.page-actions .link-card {
+    display: inline-flex;
+}
+
+/* ===== 六一页：分栏卡片与区块 ===== */
+.split-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.split-cards .split-item {
+    margin-bottom: 0;
+}
+
+/* 简介卡片：中英双语居中 */
+.intro-card {
+    text-align: center;
+    padding: 2.2rem 2rem;
+}
+
+.intro-cn {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.8rem;
+}
+
+.intro-en {
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.section-block {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: #c8a2ff;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    text-shadow: 0 0 20px rgba(196, 77, 255, 0.3);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-bottom: 0;
+}
+
+.contact-grid .contact-card {
+    margin-bottom: 0;
+}
+
+/* ===== Responsive（扩展） ===== */
+@media (max-width: 768px) {
+    .page-nav {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-links {
+        gap: 0.9rem;
+    }
+
+    .nav-links a {
+        font-size: 0.82rem;
+    }
+
+    .page-container {
+        padding: 5rem 1rem 4rem;
+    }
+
+    .page-card {
+        padding: 1.3rem 1.2rem;
+    }
+
+    .toc-item {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.9rem;
+    }
+
+    .split-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-brand {
+        font-size: 1rem;
+    }
+
+    .nav-logo {
+        width: 26px;
+        height: 26px;
+    }
+
+    .nav-links {
+        gap: 0.6rem;
+    }
+
+    .nav-links a {
+        font-size: 0.75rem;
+    }
+
+    .toc {
+        gap: 0.5rem;
+    }
+
+    .toc-item {
+        font-size: 0.8rem;
+        padding: 0.45rem 0.8rem;
+        border-radius: 10px;
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .split-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== 漩涡入口 ===== */
+.vortex-wrap {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto 2rem;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.vortex-wrap:hover {
+    transform: scale(1.04);
+}
+
+#vortexCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ===== 漩涡菜单 ===== */
+.vortex-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 3;
+    flex-wrap: nowrap;
+}
+
+.vortex-menu.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.vortex-item {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid rgba(196, 77, 255, 0.4);
+    border-radius: 24px;
+    background: rgba(10, 10, 30, 0.55);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(196, 77, 255, 0.18);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.vortex-item:hover {
+    color: #fff;
+    background: rgba(196, 77, 255, 0.25);
+    border-color: #c44dff;
+    box-shadow: 0 0 30px rgba(196, 77, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ===== 全屏页面过渡层（漩涡放大透明消失） ===== */
+.page-transition {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    margin-left: -100px;
+    margin-top: -100px;
+    z-index: 9999;
+    pointer-events: none;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(5, 5, 16, 0) 0%, rgba(5, 5, 16, 0.4) 42%, rgba(5, 5, 16, 0.97) 78%, #050510 100%),
+        conic-gradient(from 0deg, #c44dff, #6e8efb, #ff6b9d, #c44dff);
+    box-shadow: 0 0 60px rgba(196, 77, 255, 0.5);
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 过渡层内的旋转光带，营造漩涡感 */
+.page-transition::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    border-radius: 50%;
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            rgba(255, 255, 255, 0.05) 0deg 6deg,
+            transparent 6deg 30deg
+        );
+}
+
+.page-transition.active {
+    visibility: visible;
+    animation: vortexBurst 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+    pointer-events: auto;
+}
+
+/* 漩涡放大 + 透明消失 */
+@keyframes vortexBurst {
+    0% {
+        transform: scale(0);
+        opacity: 0.95;
+    }
+    35% {
+        transform: scale(3);
+        opacity: 0.85;
+    }
+    100% {
+        transform: scale(14);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .vortex-wrap {
+        width: 220px;
+        height: 220px;
+    }
+
+    .vortex-menu {
+        gap: 0.5rem;
+    }
+
+    .vortex-item {
+        font-size: 0.75rem;
+        padding: 0.45rem 0.8rem;
+    }
+}
