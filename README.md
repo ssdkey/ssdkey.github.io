@@ -6,7 +6,7 @@
 
 ## 首页截图
 
-![首页截图](img/homepage.jpg)
+![首页截图](https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/F8wgbCSjjoio9axD0kEceKRunDd)
 
 ## 技术栈
 
