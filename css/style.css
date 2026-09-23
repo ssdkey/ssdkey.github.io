@@ -863,7 +863,11 @@ a.nav-entry .work-desc {
     }
 
     .nav-links a {
-        font-size: 0.75rem;
+        font-size: 0.82rem;
+        padding: 0.45rem 0.2rem;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
     }
 
     .toc {
@@ -886,6 +890,33 @@ a.nav-entry .work-desc {
 
     .contact-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* 移动端可读性：正文与描述不小于 14px */
+    .intro-cn {
+        font-size: 1.05rem;
+    }
+
+    .intro-en {
+        font-size: 0.88rem;
+    }
+
+    .work-desc {
+        font-size: 0.88rem;
+    }
+
+    .contact-card {
+        min-height: 56px;
+        padding: 0.9rem 1.1rem;
+    }
+
+    .contact-desc {
+        font-size: 0.82rem;
+    }
+
+    .page-actions .link-card {
+        min-height: 44px;
+        align-items: center;
     }
 }
 
