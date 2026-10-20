@@ -2,7 +2,9 @@
 
 我的个人主页（域名：me.iuuv.cn），一个星空主题的单页网站。
 
-首页记录「来到地球的」天数倒计时，带动态漩涡入口；点击漩涡进入「六一」页，展示我的 GitHub 项目（my repositories）与社区主页（about me）。
+首页记录「来到地球的」天数倒计时，带动态漩涡入口；点击漩涡进入 `page/` 下的「六一」页，展示我的 GitHub 项目（my repositories）与社区主页（about me）。
+
+除首页外的页面都在 `page/` 目录里。`404.html` 例外，必须留在根目录，GitHub Pages 只认根目录这一份。
 
 ## 首页截图
 
@@ -18,14 +20,26 @@
 ## 目录
 
 ```
-index.html      首页：倒计时 + 漩涡入口
-about.html      六一页：项目与社区链接
-404.html        自定义 404
-css/style.css   全部样式
-js/starfield.js 星空背景 + 入场动画
-js/vortex.js    漩涡 Canvas 与跳转过渡
+index.html           首页：倒计时 + 漩涡入口
+404.html             自定义 404（必须在根目录）
+page/about.html      六一页：项目与社区链接
+page/shuang.html     shuang 页：从 1993-03-18 起的计时
+css/style.css        全部样式
+js/starfield.js      星空背景 + 入场动画
+js/vortex.js         漩涡 Canvas 与跳转过渡
+js/countdown.js      通用计时器，读 #countdown 的 data-target
 robots.txt / sitemap.xml / CNAME
 ```
+
+## 加一个新的计时页
+
+复制 `page/shuang.html`，改 `#countdown` 上的 `data-target` 即可（ISO 8601，带时区）：
+
+```html
+<div class="countdown-wrapper" id="countdown" data-target="1993-03-18T00:00:00+08:00">
+```
+
+`page/` 下的页面引用根目录资源要用 `../`，例如 `../css/style.css`、`../js/countdown.js`。
 
 ## 本地预览
 

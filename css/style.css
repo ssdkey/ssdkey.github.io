@@ -292,6 +292,11 @@ body {
 .footer {
     position: fixed;
     bottom: 1.5rem;
+    /* 不依赖父容器的布局，任何页面都居中 */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;

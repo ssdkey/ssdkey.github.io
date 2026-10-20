@@ -1,4 +1,4 @@
-/* 首页漩涡入口：Canvas 螺旋粒子 + 点击进入 about.html */
+/* 首页漩涡入口：Canvas 螺旋粒子 + 点击进入 page/about.html */
 (function () {
     'use strict';
 
@@ -169,7 +169,7 @@
 
         e.preventDefault();
         clicked = true;
-        goTo(wrap.getAttribute('href') || 'about.html');
+        goTo(wrap.getAttribute('href') || 'page/about.html');
     });
 
     // 触屏没有 hover，用按下反馈代替
