@@ -4,25 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>六一 - iuuv</title>
-    <meta name="description" content="iuuv 的个人主页 - 六一">
-    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="iuuv（六一）的个人主页：我的开源项目与社区主页。">
+    <meta name="theme-color" content="#050510">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://me.iuuv.cn/about.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="iuuv">
+    <meta property="og:title" content="六一 - iuuv">
+    <meta property="og:description" content="我的开源项目与社区主页。">
+    <meta property="og:url" content="https://me.iuuv.cn/about.html">
+    <meta property="og:locale" content="zh_CN">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="stylesheet" href="css/style.css">
+    <noscript>
+        <style>
+            .animate-in, .footer { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 </head>
 <body>
     <!-- 星空粒子画布 -->
-    <canvas id="starfield"></canvas>
+    <canvas id="starfield" aria-hidden="true"></canvas>
 
     <!-- 鼠标跟随光效 -->
-    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
     <!-- 顶部导航 -->
     <nav class="page-nav animate-in">
-        <a href="index.html" class="nav-brand">
-            <img src="favicon.ico" alt="小熊猫" class="nav-logo">
+        <a href="index.html" class="nav-brand" aria-label="返回首页">
+            <img src="favicon.ico" alt="" class="nav-logo" width="30" height="30">
         </a>
         <div class="nav-links">
             <a href="index.html">首页</a>
-            <a href="about.html" class="active">六一</a>
+            <a href="about.html" class="active" aria-current="page">六一</a>
         </div>
     </nav>
 
@@ -115,6 +132,6 @@
         </a>
     </footer>
 
-    <script src="js/starfield.js"></script>
+    <script src="js/starfield.js" defer></script>
 </body>
 </html>

@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iuuv - 但行好事 莫问前程</title>
-    <meta name="keywords" content="iuuv, 个人主页, 博客, ssdkey">
-    <meta name="description" content="iuuv 的个人主页 - 但行好事，莫问前程">
+    <meta name="description" content="iuuv 的个人主页 —— 但行好事，莫问前程。">
     <meta name="author" content="iuuv">
-    <link rel="icon" href="favicon.ico">
+    <meta name="theme-color" content="#050510">
+    <meta name="color-scheme" content="dark">
+    <link rel="canonical" href="https://me.iuuv.cn/">
+
+    <!-- 社交平台分享卡片 -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="iuuv">
+    <meta property="og:title" content="iuuv - 但行好事 莫问前程">
+    <meta property="og:description" content="iuuv 的个人主页 —— 但行好事，莫问前程。">
+    <meta property="og:url" content="https://me.iuuv.cn/">
+    <meta property="og:locale" content="zh_CN">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="stylesheet" href="css/style.css">
+    <noscript>
+        <style>
+            /* JS 挂了也不能白屏 */
+            .animate-in, .footer { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 </head>
 <body>
     <!-- 星空粒子画布 -->
-    <canvas id="starfield"></canvas>
+    <canvas id="starfield" aria-hidden="true"></canvas>
 
     <!-- 鼠标跟随光效 -->
-    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
     <div class="container">
         <div class="content">
@@ -32,10 +50,10 @@
             <h1 class="title animate-in delay-1">来到地球的</h1>
 
             <!-- 倒计时 -->
-            <div class="countdown-wrapper animate-in delay-2">
+            <div class="countdown-wrapper animate-in delay-2" role="timer" aria-label="来到地球的时长">
                 <div class="countdown-item">
                     <div class="countdown-card">
-                        <span class="countdown-number" id="days">000</span>
+                        <span class="countdown-number days" id="days">00000</span>
                     </div>
                     <span class="countdown-label">DAYS</span>
                 </div>
@@ -65,14 +83,14 @@
             <!-- 座右铭 -->
             <p class="motto animate-in delay-3">"但行好事" "莫问前程"</p>
 
-            <!-- 漩涡入口（点击进入导航页） -->
-            <div class="vortex-wrap animate-in delay-3" id="vortexWrap">
-                <canvas id="vortexCanvas" width="280" height="280"></canvas>
-            </div>
+            <!-- 漩涡入口（点击进入六一页） -->
+            <a class="vortex-wrap animate-in delay-3" id="vortexWrap" href="about.html" aria-label="进入六一页">
+                <canvas id="vortexCanvas" width="280" height="280" aria-hidden="true"></canvas>
+            </a>
         </div>
 
         <!-- 页脚 -->
-        <footer class="footer animate-in delay-7">
+        <footer class="footer">
             <a href="https://github.com/ssdkey" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <svg height="20" viewBox="0 0 16 16" width="20" fill="currentColor">
                     <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
@@ -84,48 +102,72 @@
     <!-- 全屏过渡层 -->
     <div class="page-transition" id="pageTransition"></div>
 
-    <script src="js/starfield.js"></script>
-    <script src="js/vortex.js"></script>
+    <script src="js/starfield.js" defer></script>
+    <script src="js/vortex.js" defer></script>
     <script>
     (function () {
-        /* ===== 倒计时 ===== */
-        const targetDate = new Date(Date.UTC(1994, 8, 25, 2, 0, 0) - 10 * 3600000);
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
-        const minutesEl = document.getElementById('minutes');
-        const secondsEl = document.getElementById('seconds');
+        'use strict';
 
-        function updateCountdown() {
-            const now = new Date();
-            const diff = now - targetDate;
+        /* ===== 倒计时：1994-09-25 00:00 (UTC+8) ===== */
+        var target = new Date('1994-09-25T00:00:00+08:00').getTime();
+
+        var els = {
+            days: document.getElementById('days'),
+            hours: document.getElementById('hours'),
+            minutes: document.getElementById('minutes'),
+            seconds: document.getElementById('seconds')
+        };
+
+        var raf = window.requestAnimationFrame || function (fn) { return setTimeout(fn, 16); };
+
+        // 只在数值真的变化时动一下，用 transform/opacity 走合成层，不触发重排
+        function setNum(el, val) {
+            if (!el || el.textContent === val) return;
+            el.textContent = val;
+            el.style.transform = 'translateY(-4px)';
+            el.style.opacity = '0.45';
+            raf(function () {
+                raf(function () {
+                    el.style.transform = '';
+                    el.style.opacity = '';
+                });
+            });
+        }
+
+        function pad(n, len) {
+            var s = String(n);
+            while (s.length < len) s = '0' + s;
+            return s;
+        }
+
+        function render() {
+            var diff = Date.now() - target;
             if (diff < 0) return;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            var d = Math.floor(diff / 86400000);
+            var h = Math.floor(diff / 3600000) % 24;
+            var m = Math.floor(diff / 60000) % 60;
+            var s = Math.floor(diff / 1000) % 60;
 
-            animateNumber(daysEl, String(days).padStart(3, '0'));
-            animateNumber(hoursEl, String(hours).padStart(2, '0'));
-            animateNumber(minutesEl, String(minutes).padStart(2, '0'));
-            animateNumber(secondsEl, String(seconds).padStart(2, '0'));
+            setNum(els.days, pad(d, 5));
+            setNum(els.hours, pad(h, 2));
+            setNum(els.minutes, pad(m, 2));
+            setNum(els.seconds, pad(s, 2));
         }
 
-        function animateNumber(el, newVal) {
-            if (el.textContent !== newVal) {
-                el.style.transform = 'translateY(-5px)';
-                el.style.opacity = '0.5';
-                setTimeout(() => {
-                    el.textContent = newVal;
-                    el.style.transform = 'translateY(0)';
-                    el.style.opacity = '1';
-                }, 150);
-            }
+        // 对齐到整秒，避免 setInterval 长期漂移
+        function tick() {
+            render();
+            setTimeout(tick, 1000 - (Date.now() % 1000));
         }
 
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        render();
+        tick();
 
+        // 从后台切回来立即校正一次
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden) render();
+        });
     })();
     </script>
 </body>
