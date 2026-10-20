@@ -204,12 +204,6 @@ body {
     animation: gradientFlow 6s ease-in-out infinite;
 }
 
-/* 天数已经过万（5 位数），单独压小字号，否则整行会折行 */
-.countdown-number.days {
-    font-size: clamp(1.4rem, 3.6vw, 2.4rem);
-    letter-spacing: -0.01em;
-}
-
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.7; }
@@ -1090,7 +1084,7 @@ a.nav-entry .work-desc {
     }
 
     .countdown-number.days {
-        font-size: 1.15rem;
+        font-size: 1.6rem;
     }
 
     .countdown-wrapper {
