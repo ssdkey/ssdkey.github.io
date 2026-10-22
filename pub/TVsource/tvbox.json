@@ -1,0 +1,36 @@
+{
+  "spider": "",
+  "wallpaper": "https://tu.aibot.top/",
+  "sites": [
+    { "key": "lzi", "name": "量子资源", "type": 1, "api": "https://cj.lziapi.com/api.php/provide/vod", "searchable": 1, "filterable": 1 },
+    { "key": "hhzy", "name": "豪华资源", "type": 1, "api": "https://hhzyapi.com/api.php/provide/vod", "searchable": 1, "filterable": 1 },
+    { "key": "bfzy", "name": "百富资源", "type": 1, "api": "https://bfzyapi.com/api.php/provide/vod", "searchable": 1, "filterable": 1 },
+    { "key": "jszy", "name": "急速资源", "type": 1, "api": "https://jszyapi.com/api.php/provide/vod", "searchable": 1, "filterable": 1 },
+    { "key": "lovedan", "name": "撸大爷资源", "type": 1, "api": "https://lovedan.net/api.php/provide/vod", "searchable": 1, "filterable": 1 },
+    { "key": "ffzy", "name": "非凡资源", "type": 1, "api": "https://ffzy5.tv/api.php/provide/vod", "searchable": 1, "filterable": 1 },
+    { "key": "tyyszy", "name": "天涯资源", "type": 1, "api": "https://tyyszy.com/api.php/provide/vod", "searchable": 1, "filterable": 1 },
+    { "key": "zy360", "name": "360资源", "type": 1, "api": "https://360zy.com/api.php/provide/vod", "searchable": 1, "filterable": 1 }
+  ],
+  "lives": [
+    {
+      "name": "直播",
+      "type": 0,
+      "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/index.m3u",
+      "epg": "https://epg.112114.xyz/?ch={name}&date={date}"
+    },
+    {
+      "name": "IPTV中文",
+      "type": 0,
+      "url": "https://iptv-org.github.io/iptv/languages/zho.m3u"
+    }
+  ],
+  "storeHouse": [
+    { "sourceName": "dxawi聚合", "sourceUrl": "https://dxawi.github.io/0/0.json" },
+    { "sourceName": "俊哥聚合", "sourceUrl": "http://home.jundie.top:81/top98.json" }
+  ],
+  "parses": [
+    { "name": "Json并发", "type": 2, "url": " https://jx.jsonplayer.com/player/?url=" },
+    { "name": "Json辅助", "type": 2, "url": "https://jx.aidouer.net/?url=" }
+  ],
+  "rules": []
+}
